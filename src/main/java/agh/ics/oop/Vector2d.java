@@ -1,22 +1,50 @@
 package agh.ics.oop;
-import static java.lang.System.out;
 
-/*public class Vector2d {
-    public final int x;
-    public final int y;
+import java.util.Objects;
 
-    public Vector2d(int x, int y) {
+public class Vector2d {
+    final public int x;
+    final public int y;
+    public Vector2d (int x, int y){
         this.x = x;
         this.y = y;
     }
-
+    // interpretuje ze precedes znaczy ze wazne jest ktory obiekt porownuje a nie czy zachodzi np (5,3) i (7,2)
+    public boolean precedes(Vector2d other) {
+        return this.x <= other.x && this.y <= other.y;
+    }
+    public boolean follows(Vector2d other) {
+        return this.x >= other.x && this.y >= other.y;
+    }
+    public Vector2d add(Vector2d other) {
+        return new Vector2d (x + other.x,y + other.y);
+    }
+    public Vector2d substract(Vector2d other) {
+        return new Vector2d (x - other.x,y - other.y);
+    }
+    public Vector2d upperRight(Vector2d other) {
+        return new Vector2d (Math.max(this.x, other.x), Math.max(this.y, other.y));
+    }
+    public Vector2d lowerLeft(Vector2d other) {
+        return new Vector2d (Math.min(this.x, other.x), Math.min(this.y, other.y));
+    }
+    public Vector2d opposite(Vector2d other) {
+        return new Vector2d (-x,-y);
+    }
     @Override
-    public String toString(int x, int y) {
+    public String toString() {
         return "(%d, %d)".formatted(x,y);
     }
-
-    public Vector2d add(Vector2d other) {
-        return new Vector2d (x: x + other.x, y: y + other.y);
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) return true;
+        if (!(other instanceof Vector2d)) return false;
+        Vector2d other2d = (Vector2d) other;
+        return Integer.compare(other2d.x, this.x) == 0 && Integer.compare(other2d.y, this.y) == 0;
     }
-
-}*/
+    //wygenerowana metoda hashCode
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+}
