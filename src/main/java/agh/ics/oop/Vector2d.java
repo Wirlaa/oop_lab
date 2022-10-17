@@ -28,19 +28,19 @@ public class Vector2d {
     public Vector2d lowerLeft(Vector2d other) {
         return new Vector2d (Math.min(this.x, other.x), Math.min(this.y, other.y));
     }
-    public Vector2d opposite(Vector2d other) {
+    public Vector2d opposite() {
         return new Vector2d (-x,-y);
     }
     @Override
     public String toString() {
-        return "(%d, %d)".formatted(x,y);
+        return "(%d,%d)".formatted(x,y);
     }
     @Override
     public boolean equals(Object other) {
         if (other == this) return true;
         if (!(other instanceof Vector2d)) return false;
         Vector2d other2d = (Vector2d) other;
-        return Integer.compare(other2d.x, this.x) == 0 && Integer.compare(other2d.y, this.y) == 0;
+        return other2d.x == this.x && other2d.y == this.y;
     }
     //wygenerowana metoda hashCode
     @Override
