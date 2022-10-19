@@ -1,6 +1,7 @@
 package agh.ics.oop;
 
 import java.util.Objects;
+//moze byc record bo wszystkie pola sa publiczne
 
 public class Vector2d {
     final public int x;

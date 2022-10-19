@@ -59,15 +59,17 @@ class Vector2dTest {
     }
 
     @Test
-    void testToString() {
+    void ToString() {
         assertEquals("(1,2)",coords1.toString());
         assertEquals("(3,0)",coords2.toString());
         assertEquals("(1,5)",coords3.toString());
     }
 
     @Test
-    void testEquals() {
+    void equals() {
         assertNotEquals(new Vector2d(  1,3), new Vector2d(0,5));
         assertEquals(new Vector2d(3,2), new Vector2d(3,2));
+        //istnieje assertSame do sprawdzania adresow
+        //given when then
     }
 }

@@ -1,15 +1,14 @@
 package agh.ics.oop;
 
-import static agh.ics.oop.MoveDirection.*;
+import java.util.Arrays;
 import static java.lang.System.out;
-import static agh.ics.oop.MapDirection.*;
 
 public class World {
     public static void main(String[] args) {
         /*out.println("start");
         Direction[] directions = strToEnum(args);
         run(directions);
-        out.println("stop");*/
+        out.println("stop");
         Vector2d position1 = new Vector2d(1,2);
         out.println(position1);
         Vector2d position2 = new Vector2d(1,2);
@@ -20,21 +19,24 @@ public class World {
         out.println(NORTH.previous());
         out.println(SOUTH.toUnitVector());
 
+        Animal cat = new Animal();
+        out.println(cat);
+        cat.move(RIGHT);
+        out.println(cat);
+        cat.move(FORWARD);
+        out.println(cat);
+        cat.move(FORWARD);
+        out.println(cat);
+        cat.move(FORWARD);
+        out.println(cat);*/
+
+        out.println(Arrays.toString(OptionsParser.parse(args)));
+
+        //run(OptionsParser.parse(args));
+
+
     }
-    public static MoveDirection[] strToEnum(String[] args) {
-        MoveDirection[] enumDirections = new MoveDirection[args.length];
-        for (int i = 0; i < args.length; i++) {
-            //enumDirections[i] = Direction.valueOf(args[i]); wywala blad
-            enumDirections[i] = switch (args[i]) {
-                case "f" -> FORWARD;
-                case "b" -> BACKWARD;
-                case "r" -> RIGHT;
-                case "l" -> LEFT;
-                default -> null;
-            };
-        }
-        return enumDirections;
-    }
+
     public static void run(MoveDirection[] directions) {
         //out.println(String.join(", ", directions)); fajny sposob na laczenie napisow
         for (MoveDirection argument : directions) {
