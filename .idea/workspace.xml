@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1e98dee-3aa9-4593-abb8-3dc3a5ceb315" name="Changes" comment="Added Animal and OptionParser">
-      <change afterPath="$PROJECT_DIR$/src/main/java/agh/ics/oop/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/agh/ics/oop/OptionsParser.java" afterDir="false" />
+    <list default="true" id="e1e98dee-3aa9-4593-abb8-3dc3a5ceb315" name="Changes" comment="Improved OptionsParser, added tests to Animal and OptionsParser, changed Vector2d to record">
+      <change afterPath="$PROJECT_DIR$/src/test/java/agh/ics/oop/AnimalTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/agh/ics/oop/OptionsParserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agh/ics/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agh/ics/oop/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agh/ics/oop/OptionsParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agh/ics/oop/OptionsParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/agh/ics/oop/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agh/ics/oop/Vector2d.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/agh/ics/oop/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agh/ics/oop/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/agh/ics/oop/Vector2dTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/agh/ics/oop/Vector2dTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -76,22 +77,8 @@
       <recent name="agh.ics.oop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.World">
-    <configuration name="World" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="agh.ics.oop.World" />
-      <module name="oop_lab.main" />
-      <option name="PROGRAM_PARAMETERS" value="f f f safas left" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="agh.ics.oop.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Vector2dTest.lowerLeft" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.OptionsParserTest.parse">
+    <configuration name="AnimalTest.isNotOutOfBounds" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -104,7 +91,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;agh.ics.oop.Vector2dTest.lowerLeft&quot;" />
+            <option value="&quot;agh.ics.oop.AnimalTest.isNotOutOfBounds&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -114,7 +101,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Vector2dTest.opposite" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnimalTest.isOrientationCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -127,7 +114,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;agh.ics.oop.Vector2dTest.opposite&quot;" />
+            <option value="&quot;agh.ics.oop.AnimalTest.isOrientationCorrect&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -137,7 +124,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Vector2dTest.testEquals" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnimalTest.isPositionCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -150,7 +137,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;agh.ics.oop.Vector2dTest.testEquals&quot;" />
+            <option value="&quot;agh.ics.oop.AnimalTest.isPositionCorrect&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -160,7 +147,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Vector2dTest.testToString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OptionsParserTest.parse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -173,7 +160,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;agh.ics.oop.Vector2dTest.testToString&quot;" />
+            <option value="&quot;agh.ics.oop.OptionsParserTest.parse&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Vector2dTest.substract" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;agh.ics.oop.Vector2dTest.substract&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -184,19 +194,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.World" />
-      <item itemvalue="Gradle.Vector2dTest.lowerLeft" />
-      <item itemvalue="Gradle.Vector2dTest.opposite" />
-      <item itemvalue="Gradle.Vector2dTest.testEquals" />
-      <item itemvalue="Gradle.Vector2dTest.testToString" />
+      <item itemvalue="Gradle.AnimalTest.isNotOutOfBounds" />
+      <item itemvalue="Gradle.AnimalTest.isOrientationCorrect" />
+      <item itemvalue="Gradle.AnimalTest.isPositionCorrect" />
+      <item itemvalue="Gradle.OptionsParserTest.parse" />
+      <item itemvalue="Gradle.Vector2dTest.substract" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.World" />
-        <item itemvalue="Gradle.Vector2dTest.testEquals" />
-        <item itemvalue="Gradle.Vector2dTest.testToString" />
-        <item itemvalue="Gradle.Vector2dTest.opposite" />
-        <item itemvalue="Gradle.Vector2dTest.lowerLeft" />
+        <item itemvalue="Gradle.OptionsParserTest.parse" />
+        <item itemvalue="Gradle.AnimalTest.isNotOutOfBounds" />
+        <item itemvalue="Gradle.AnimalTest.isPositionCorrect" />
+        <item itemvalue="Gradle.AnimalTest.isOrientationCorrect" />
+        <item itemvalue="Gradle.Vector2dTest.substract" />
       </list>
     </recent_temporary>
   </component>
@@ -230,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666041991101</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Animal and OptionParser">
+      <created>1666211434590</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666211434590</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,6 +266,7 @@
     <MESSAGE value="Added Vector2d and MapDirection" />
     <MESSAGE value="Added tests for Vector2d and MapDirection" />
     <MESSAGE value="Added Animal and OptionParser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Animal and OptionParser" />
+    <MESSAGE value="Improved OptionsParser, added tests to Animal and OptionsParser, changed Vector2d to record" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved OptionsParser, added tests to Animal and OptionsParser, changed Vector2d to record" />
   </component>
 </project>

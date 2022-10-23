@@ -1,20 +1,21 @@
 package agh.ics.oop;
 
+import java.util.ArrayList;
+
 public class OptionsParser {
-    //czy tablica wynikowa moze byc dluzsza?
+    //korzystam z listarray, ktora potem konwertuje na array
     public static MoveDirection[] parse(String[] options) {
-        MoveDirection[] directions = new MoveDirection[options.length];
-        //List<MoveDirection> directions = new ArrayList<>();
-        for (int i = 0; i < options.length; i++) {
-            directions[i] = switch (options[i]) {
-                case "f", "forward": yield MoveDirection.FORWARD;
-                case "b", "backward": yield MoveDirection.BACKWARD;
-                case "r", "right": yield MoveDirection.RIGHT;
-                case "l", "left": yield MoveDirection.LEFT;
-                default: yield null;
+        ArrayList<MoveDirection> directionsList = new ArrayList<>();
+        for (String option : options) {
+            MoveDirection direction = switch (option) {
+                case "f", "forward" -> MoveDirection.FORWARD;
+                case "b", "backward" -> MoveDirection.BACKWARD;
+                case "r", "right" -> MoveDirection.RIGHT;
+                case "l", "left" -> MoveDirection.LEFT;
+                default -> null;
             };
+            if (direction != null) directionsList.add(direction);
         }
-        System.out.println(java.util.Arrays.toString(directions));
-        return directions;
+        return directionsList.toArray(new MoveDirection[0]);
     }
 }
