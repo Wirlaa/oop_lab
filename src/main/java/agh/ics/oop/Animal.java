@@ -1,18 +1,13 @@
 package agh.ics.oop;
 
+import java.util.Objects;
+
 public class Animal {
     private MapDirection orientation;
     private Vector2d position;
-    private IWorldMap map;
-    // stary konstruktor raczej nie ma sensu, bo zwierzeta musza byc umieszczone na jakiejs mapie
-    // ale przydaje sie do startch testow
-    public Animal () {
-        this.orientation = MapDirection.NORTH;
-        this.position = new Vector2d(0,0);
-    }
-    // najchetniej to bym zostawila tylko ostatni konstruktor
+    private final IWorldMap map;
     public Animal (IWorldMap map) {
-        this.map = map;
+        this(map, new Vector2d(0,0), MapDirection.NORTH);
     }
     public Animal(IWorldMap map, Vector2d initialPosition, MapDirection orientation) {
         this.map = map;
@@ -23,10 +18,7 @@ public class Animal {
     public MapDirection getOrientation() { return orientation; }
     public Vector2d getPosition() { return position; }
     public IWorldMap getMap() { return map; }
-
-    // przy isAt mozna korzystac z Objects.equals żeby nie wywaliło null
-    // ale tutaj mamy wlasnego equals ktory juz to sprawdza (chyba)
-    public boolean isAt(Vector2d position) { return this.position.equals(position); }
+    public boolean isAt(Vector2d position) { return Objects.equals(this.position, position); }
     @Override
     public String toString()  { return orientation.toString(); }
     public void move(MoveDirection direction) {

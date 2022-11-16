@@ -1,7 +1,6 @@
 package agh.ics.oop;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class Vector2dTest {
@@ -69,7 +68,5 @@ class Vector2dTest {
     void equals() {
         assertNotEquals(new Vector2d(  1,3), new Vector2d(0,5));
         assertEquals(new Vector2d(3,2), new Vector2d(3,2));
-        //istnieje assertSame do sprawdzania adresow
-        //given when then
     }
 }

@@ -1,10 +1,9 @@
 package agh.ics.oop;
 
-//moze byc record bo wszystkie pola sa final
+//moze byc record bo wszystkie pola sa final, ale przez to sa tez prywatne
 
 public record Vector2d(int x, int y) {
     //gettery
-    //czy da sie bez nich?
     public int getX() { return x; }
     public int getY() { return y; }
     public boolean precedes(Vector2d other) {

@@ -1,8 +1,5 @@
 package agh.ics.oop;
 
-// przepraszam ze tak pozno pushuje, nie wyrobilam sie
-// rano dopisze testy
-
 public class World {
     public static void main(String[] args) {
         MoveDirection[] directions = new OptionsParser().parse(args);
@@ -24,4 +21,6 @@ public class World {
     moze trzymac liste wszystkich utworzonych obiektow i metode sprawdzajacą, czy pole na ktore przechodzimy nie jest zajete
     albo trzymac mape typu bool, ktora jest automatycznie aktualizowana i od razu zwraca czy miejsce jest wolne
 */
-// zgaduje ze robimy wersje pierwsza?
+
+//istnieje assertSame do sprawdzania adresow
+//given when then

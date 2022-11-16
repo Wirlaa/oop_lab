@@ -8,8 +8,9 @@ public class SimulationEngine implements IEngine {
     public SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] starting_positions) {
         this.directions = directions;
         this.map = map;
-        for (Vector2d position: starting_positions)
+        for (Vector2d position: starting_positions) {
             map.place(new Animal(map), position, STARTING_ORIENTATION);
+        }
     }
     //zwierzeta maja byc trzymane na mapie czy w silniku?
     public void run() {

@@ -1,5 +1,4 @@
 package agh.ics.oop;
-// czemu wykorzystuje prywatne pola wektorow ):<<<
 /**
  * The map visualizer converts the {@link IWorldMap} map into a string
  * representation.

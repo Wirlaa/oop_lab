@@ -1,5 +1,4 @@
 package agh.ics.oop;
-// czy mozemy zmieniac interfejs?
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ import java.util.List;
  *
  */
 public interface IWorldMap {
-    // dodalam getter, bo nie wiem gdzie maja byc trzymane zwierzeta
     List<Animal> getAnimals();
 
     /**
