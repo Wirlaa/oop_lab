@@ -43,7 +43,7 @@ class AnimalTest {
     }
 
     @Test
-    void isNotOutOfBounds() {
+    void isInBounds() {
         // given
         Animal animal = new Animal();
         // checking north border

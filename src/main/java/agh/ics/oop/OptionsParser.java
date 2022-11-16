@@ -1,21 +1,25 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 public class OptionsParser {
-    //korzystam z listarray, ktora potem konwertuje na array
+    // kazda kolekcje mozna zamienic na streamy
+    // mpa, filter, reduce
     public static MoveDirection[] parse(String[] options) {
-        ArrayList<MoveDirection> directionsList = new ArrayList<>();
-        for (String option : options) {
-            MoveDirection direction = switch (option) {
-                case "f", "forward" -> MoveDirection.FORWARD;
-                case "b", "backward" -> MoveDirection.BACKWARD;
-                case "r", "right" -> MoveDirection.RIGHT;
-                case "l", "left" -> MoveDirection.LEFT;
-                default -> null;
-            };
-            if (direction != null) directionsList.add(direction);
-        }
-        return directionsList.toArray(new MoveDirection[0]);
+        return Stream.of(options)
+                .map(OptionsParser::getMoveDirection)
+                .filter(Objects::nonNull)
+                .toArray(MoveDirection[]::new);
     }
+    private static MoveDirection getMoveDirection(String option) {
+        return switch (option) {
+            case "f", "forward" -> MoveDirection.FORWARD;
+            case "b", "backward" -> MoveDirection.BACKWARD;
+            case "r", "right" -> MoveDirection.RIGHT;
+            case "l", "left" -> MoveDirection.LEFT;
+            default -> null;
+        };
+    }
+
 }
