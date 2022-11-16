@@ -3,7 +3,10 @@ package agh.ics.oop;
 //moze byc record bo wszystkie pola sa final
 
 public record Vector2d(int x, int y) {
-    // interpretuje ze precedes znaczy ze wazne jest ktory obiekt porownuje a nie czy zachodzi np (5,3) i (7,2)
+    //gettery
+    //czy da sie bez nich?
+    public int getX() { return x; }
+    public int getY() { return y; }
     public boolean precedes(Vector2d other) {
         return this.x <= other.x && this.y <= other.y;
     }

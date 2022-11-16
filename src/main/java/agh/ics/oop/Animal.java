@@ -3,36 +3,47 @@ package agh.ics.oop;
 public class Animal {
     private MapDirection orientation;
     private Vector2d position;
-    //mozna przypisac powyzej zamiast konstruktora
-    public Animal (){
+    private IWorldMap map;
+    // stary konstruktor raczej nie ma sensu, bo zwierzeta musza byc umieszczone na jakiejs mapie
+    // ale przydaje sie do startch testow
+    public Animal () {
         this.orientation = MapDirection.NORTH;
-        this.position = new Vector2d(2,2);
+        this.position = new Vector2d(0,0);
     }
-    /* pytanie 10:
-    moze trzymac liste wszystkich utworzonych obiektow i metode sprawdzajacą, czy pole na ktore przechodzimy nie jest zajete
-    albo trzymac mape typu bool, ktora jest automatycznie aktualizowana i od razu zwraca czy miejsce jest wolne
-     */
-    public boolean isAt(Vector2d position) { return this.position.equals(position); }
-    //czy right i left rowniez maja zmieniac pozycje?
-    //czy mozna dodac wlasne funkcje?
-    //czy dobrze wykorzystuje yield?
-    private boolean outOfBounds(Vector2d position){
-        Vector2d top = new Vector2d(4,4);
-        Vector2d bottom = new Vector2d(0,0);
-        return position.upperRight(top).equals(top) && position.lowerLeft(bottom).equals(bottom);
+    // najchetniej to bym zostawila tylko ostatni konstruktor
+    public Animal (IWorldMap map) {
+        this.map = map;
     }
-    public void move(MoveDirection direction) {
-        this.orientation = switch (direction) {
-            case RIGHT: yield this.orientation.next();
-            case LEFT: yield this.orientation.previous();
-            case FORWARD, BACKWARD:
-                Vector2d movement = this.orientation.toUnitVector();
-                Vector2d rawposition = (direction == MoveDirection.FORWARD) ? this.position.add(movement) : this.position.substract(movement);
-                if (outOfBounds(rawposition)) this.position = rawposition;
-                yield this.orientation;
-        };
+    public Animal(IWorldMap map, Vector2d initialPosition, MapDirection orientation) {
+        this.map = map;
+        this.orientation = orientation;
+        this.position = initialPosition;
+    }
+    //gettery
+    public MapDirection getOrientation() { return orientation; }
+    public Vector2d getPosition() { return position; }
+    public IWorldMap getMap() { return map; }
 
-    }
+    // przy isAt mozna korzystac z Objects.equals żeby nie wywaliło null
+    // ale tutaj mamy wlasnego equals ktory juz to sprawdza (chyba)
+    public boolean isAt(Vector2d position) { return this.position.equals(position); }
     @Override
-    public String toString()  { return orientation.toString() + ' ' + position.toString(); }
+    public String toString()  { return orientation.toString(); }
+    public void move(MoveDirection direction) {
+        switch (direction) {
+            case RIGHT -> orientation = orientation.next();
+            case LEFT -> orientation = orientation.previous();
+            case FORWARD -> {
+                if (map.canMoveTo(position.add(orientation.toUnitVector()))) {
+                    position = position.add(orientation.toUnitVector());
+                }
+            }
+            case BACKWARD -> {
+                if (map.canMoveTo(position.substract(orientation.toUnitVector()))) {
+                    position = position.substract(orientation.toUnitVector());
+                }
+            }
+        }
+    }
 }
+
