@@ -32,7 +32,7 @@ class RectangularMapTest {
         IWorldMap map = new RectangularMap(width, height);
         // when
         assertFalse(map.isOccupied(new Vector2d(2,3)));
-        map.place(new Animal(map), new Vector2d(2,3), MapDirection.NORTH);
+        map.place(new Animal(map, new Vector2d(2,3), MapDirection.NORTH));
         assertTrue(map.isOccupied(new Vector2d(2,3)));
     }
 
