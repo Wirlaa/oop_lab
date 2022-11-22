@@ -11,6 +11,7 @@ import java.util.List;
  */
 
 // zmienilam definicje objectAt i isOccupied wedlug mojej interpretacji
+// dodalam mapUpdate
 // czy tak sie robi w praktyce ze interfejsy maja definicje getterow?
 public interface IWorldMap {
     List<Animal> getAnimals();

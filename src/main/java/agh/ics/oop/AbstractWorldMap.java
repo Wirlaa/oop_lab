@@ -13,6 +13,7 @@ public abstract class AbstractWorldMap implements IWorldMap {
     public boolean place (Animal animal) {
         if (canMoveTo(animal.getPosition())) {
             animals.add(animal);
+            mapUpdate();
             return true;
         }
         return false;

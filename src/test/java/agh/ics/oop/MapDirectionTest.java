@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MapDirectionTest {
 
-    //nalezy zmieniac nazwy metod czy nie?
     @Test
     void nextTest() {
         assertEquals(SOUTH,EAST.next());
@@ -22,6 +21,14 @@ class MapDirectionTest {
         assertEquals(EAST,SOUTH.previous());
         assertEquals(SOUTH,WEST.previous());
         assertEquals(WEST,NORTH.previous());
+    }
+
+    @Test
+    void toUnitVectorTest() {
+        assertEquals(new Vector2d(1,0),EAST.toUnitVector());
+        assertEquals(new Vector2d(0,-1),SOUTH.toUnitVector());
+        assertEquals(new Vector2d(-1,0),WEST.toUnitVector());
+        assertEquals(new Vector2d(0,1),NORTH.toUnitVector());
     }
 
 }
