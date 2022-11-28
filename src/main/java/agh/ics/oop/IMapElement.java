@@ -2,7 +2,7 @@ package agh.ics.oop;
 
 /**
  * The interface responsible for managing elements placed on maps.
- * Assumes that Vector2d and MoveDirection classes are defined.
+ * Assumes that Vector2d class is defined.
  */
 
 public interface IMapElement {

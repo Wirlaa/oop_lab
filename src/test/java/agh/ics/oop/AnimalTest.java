@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AnimalTest {
-
+/*
     @Test
     void isOrientationCorrect() {
         // given animal and map
@@ -75,5 +75,5 @@ class AnimalTest {
         assertFalse(animal.isAt(new Vector2d(-2,0)));
         assertTrue(animal.isAt(new Vector2d(0,0)));
     }
-
+*/
 }

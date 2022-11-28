@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // dodalam porzadniejsze testy, ale w sumie to nie wiem czy je w ogole dobrze pisze :D
 class GrassFieldTest {
-
+/*
     @Test
     void isMoveToWorking() {
         // given map with an animal placed on (0,3)
@@ -75,5 +75,5 @@ class GrassFieldTest {
         assertEquals(new Vector2d(-10,-5), map.getLowerBound());
         assertEquals(new Vector2d(20,20), map.getUpperBound());
     }
-
+*/
 }

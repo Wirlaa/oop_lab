@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+
 public class SimulationEngine implements IEngine {
     private static final MapDirection STARTING_ORIENTATION = MapDirection.NORTH;
     private final MoveDirection[] directions;
@@ -13,9 +14,12 @@ public class SimulationEngine implements IEngine {
         }
     }
     public void run() {
+        Animal[] animals = map.getElements().values().stream()
+                .filter(element -> element instanceof Animal)
+                .toArray(Animal[]::new);
         for (int i = 0; i < directions.length; i++) {
-            map.getAnimals().get(i % map.getAnimals().size()).move(directions[i]);
+            animals[i % animals.length].move(directions[i]);
         }
-        System.out.println(map.toString());
+        System.out.println(map);
     }
 }

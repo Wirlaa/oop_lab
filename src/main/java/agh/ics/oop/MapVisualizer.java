@@ -67,23 +67,8 @@ public class MapVisualizer {
         builder.append(System.lineSeparator());
         return builder.toString();
     }
-    // zmienilam drawObject, bo nie podobalo mi sie jak byly wykorzystywane isOccupied i objectAt
-    // mozliwe ze zle zrozumialam zadanie, ale dla mnie isOccupied sprawdza obecnosc zwierzat
-    // a objectAt sprawdza obecnosc dowolnego obiektu w danej przeze mnie kolejnosci (najpierw zwierzeta, potem trawa)
     private String drawObject(Vector2d currentPosition) {
         String result;
-        Object object = this.map.objectAt(currentPosition);
-        if (object != null) {
-            result = object.toString();
-        }
-        else {
-            result = EMPTY_CELL;
-        }
-        return result;
-    }
-    /*
-    private String drawObject(Vector2d currentPosition) {
-        String result = null;
         if (this.map.isOccupied(currentPosition)) {
             Object object = this.map.objectAt(currentPosition);
             if (object != null) { // huh? czemu moze byc nullem skoro jest occupied?
@@ -92,12 +77,10 @@ public class MapVisualizer {
                 result = EMPTY_CELL;
             }
         }
-
         else {
             result = EMPTY_CELL;
         }
         return result;
     }
-     */
 }
 

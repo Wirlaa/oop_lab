@@ -3,69 +3,46 @@ package agh.ics.oop;
 import java.util.*;
 
 public class GrassField extends AbstractWorldMap {
-    private final List<Grass> grassList = new ArrayList<>();
-    // pewnie jak przestaniemy korzystac z list to ta lista list nie bedzie przydatna, ale przynajmniej przekonalam sie
-    // jak bardzo typecastowanie w javie jest trudne :D
-    // moze istnieje jakis ladniejszy sposob, na razie zostawiam tak
-    private final List<List<? extends AbstractWorldMapElement>> elements = new ArrayList<>(Arrays.asList(animals, grassList));
-    // gettery
-    public List<Grass> getGrassList() { return Collections.unmodifiableList(grassList); }
     public GrassField (int size) {
-        elements.add(animals);
-        // losowanie trawy
+        List<Vector2d> positions = shuffleGrid(size);
+        // czy da sie bez fora?
         for (int i = 0; i < size; i++) {
-            Vector2d newPosition;
-            do {
-                newPosition = new Vector2d(
-                        (int) Math.floor(Math.random() * (Math.sqrt(size * 10) + 1)),
-                        (int) Math.floor(Math.random() * (Math.sqrt(size * 10) + 1))
-                );
-            } while (objectAt(newPosition) != null);
-            grassList.add(new Grass(newPosition));
-        }
-        elements.add(grassList);
-        // ustalenie jakiegos srodka mapy od ktorego mozna ja rozszerzyc
-        lowerBound = grassList.get(0).getPosition();
-        upperBound = lowerBound;
-        coordsUpdate();
-    }
-    protected void coordsUpdate() {
-        for (List<? extends AbstractWorldMapElement>  list: elements) {
-            lowerBound = list.stream().map(AbstractWorldMapElement::getPosition).reduce(lowerBound, Vector2d::lowerLeft);
-            upperBound = list.stream().map(AbstractWorldMapElement::getPosition).reduce(upperBound, Vector2d::upperRight);
+            elements.put(positions.get(i), new Grass(positions.get(i)));
         }
     }
-    // odpowiedzialna rowniez za znikanie trawy w momencie wywolania
-    // (prawdopodobnie powinna tym sie zajmowac funkcja move, ale ona jest w klasie animal, a zjadanie trawy na razie
-    // jest wylaczne dla tej mapy)
+    @Override
+    public Vector2d getLowerBound() {
+        return elements.keySet().stream().reduce(Vector2d::lowerLeft).orElse(null);
+    }
+    @Override
+    public Vector2d getUpperBound() {
+        return elements.keySet().stream().reduce(Vector2d::upperRight).orElse(null);
+    }
+
+    // "Nowe kępki trawy powinny pojawiać się losowo w obszarze z punktu 1"
+    // Czy trzymac gdzies size jednak? albo pamietac liste uzywana do losowania?
+    // i czy da sie ładniej ją wygenerować bez dwoch forow?
+    private List<Vector2d> shuffleGrid(int size) {
+        List<Vector2d> positionsGrid = new ArrayList<>();
+        for (int i = 0; i < Math.sqrt(size*10); i++) {
+            for (int j = 0; j < Math.sqrt(size*10); j++) {
+                positionsGrid.add(new Vector2d(i,j));
+            }
+        }
+        Collections.shuffle(positionsGrid);
+        return positionsGrid;
+    }
+    @Override
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
+        if (objectAt(newPosition) instanceof Grass) {
+            elements.remove(oldPosition, objectAt(oldPosition));
+            List<Vector2d> positions = shuffleGrid(Math.max(getUpperBound().getX() - getLowerBound().getX(),getUpperBound().getY() - getLowerBound().getY()));
+            elements.put(positions.get(0), new Grass(positions.get(0)));
+        }
+        super.positionChanged(oldPosition,newPosition);
+    }
+    // czy da się uniknac uzywania instanceof?
     public boolean canMoveTo (Vector2d position) {
-        if (isOccupied(position)) return false;
-        if (objectAt(position) instanceof Grass) {
-            grassList.remove((Grass) objectAt(position));
-            Vector2d newPosition;
-            do {
-                newPosition = new Vector2d(
-                        (int) Math.floor(Math.random() * (upperBound.getX() - lowerBound.getX()) + lowerBound.getX()),
-                        (int) Math.floor(Math.random() * (upperBound.getY() - lowerBound.getY()) + lowerBound.getY())
-                );
-            } while (Objects.equals(newPosition, position) && objectAt(newPosition) != null);
-            grassList.add(new Grass(newPosition));
-        }
-        return true;
-    }
-    // nie podoba mi sie ze publiczne, ale musi byc w interface
-    public void mapUpdate() {
-        coordsUpdate();
-    }
-    public Object objectAt(Vector2d position) {
-        AbstractWorldMapElement result;
-        for (List<? extends AbstractWorldMapElement> list: elements) {
-            result = list.stream()
-                    .filter(element -> Objects.equals(position, element.getPosition()))
-                    .findFirst()
-                    .orElse(null);
-            if (result != null) return result;
-        }
-        return null;
+        return !(objectAt(position) instanceof Animal);
     }
 }
