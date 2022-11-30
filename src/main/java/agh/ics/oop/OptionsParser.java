@@ -4,8 +4,6 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class OptionsParser {
-    // kazda kolekcje mozna zamienic na streamy
-    // mpa, filter, reduce
     public static MoveDirection[] parse(String[] options) {
         return Stream.of(options)
                 .map(OptionsParser::getMoveDirection)

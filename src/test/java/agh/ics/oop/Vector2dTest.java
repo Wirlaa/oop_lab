@@ -31,9 +31,9 @@ class Vector2dTest {
 
     @Test
     void substract() {
-        assertEquals(new Vector2d(-2,2),coords1.substract(coords2));
-        assertEquals(new Vector2d(2,-2),coords2.substract(coords1));
-        assertEquals(new Vector2d(0,0),coords3.substract(coords3));
+        assertEquals(new Vector2d(-2,2),coords1.subtract(coords2));
+        assertEquals(new Vector2d(2,-2),coords2.subtract(coords1));
+        assertEquals(new Vector2d(0,0),coords3.subtract(coords3));
     }
 
     @Test
