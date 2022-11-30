@@ -12,4 +12,13 @@ public interface IMapElement {
      * @return Vector2d
      */
     Vector2d getPosition();
+    /**
+     * Indicate if an object is at the given position.
+     *
+     * @param position
+     *      The given position.
+     *
+     * @return True if an object is at the given position.
+     */
+    boolean isAt(Vector2d position);
 }

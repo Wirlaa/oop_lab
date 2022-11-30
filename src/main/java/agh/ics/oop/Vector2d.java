@@ -3,8 +3,6 @@ package agh.ics.oop;
 public record Vector2d(int x, int y) {
     public int getX() { return x; }
     public int getY() { return y; }
-    // troche nie wiem gdzie trzeba bylo uzyc precedes i follows, bo ich nigdzie nie wykorzystuje
-    // upperRight i lowerLeft wydaja mi sie wystarczajace
     public boolean precedes(Vector2d other) {
         return this.x <= other.x && this.y <= other.y;
     }

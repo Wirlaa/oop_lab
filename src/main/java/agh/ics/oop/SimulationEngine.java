@@ -14,6 +14,7 @@ public class SimulationEngine implements IEngine {
         }
     }
     public void run() {
+        //znowu nie wiem czy stream czy streamof
         Animal[] animals = map.getElements().values().stream()
                 .filter(element -> element instanceof Animal)
                 .toArray(Animal[]::new);

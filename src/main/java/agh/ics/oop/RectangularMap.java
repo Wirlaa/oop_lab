@@ -1,7 +1,5 @@
 package agh.ics.oop;
 
-import java.util.Objects;
-
 public class RectangularMap extends AbstractWorldMap {
     private final Vector2d lowerBound;
     private final Vector2d upperBound;
@@ -15,6 +13,6 @@ public class RectangularMap extends AbstractWorldMap {
     public Vector2d getUpperBound() { return upperBound; }
 
     public boolean canMoveTo (Vector2d position) {
-        return !isOccupied(position) && Objects.equals(position, position.upperRight(lowerBound).lowerLeft(upperBound));
+        return !isOccupied(position) && position.follows(lowerBound) && position.precedes(upperBound);
     }
 }

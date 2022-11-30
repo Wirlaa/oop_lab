@@ -10,8 +10,11 @@ import java.util.Map;
  *
  */
 
-// czy tak sie robi w praktyce ze interfejsy maja definicje getterow?
 public interface IWorldMap {
+    /**
+     *
+     * @return Hashmap of all elements on the map.
+     */
     Map<Vector2d, IMapElement> getElements();
     /**
      * Indicate if any object can move to the given position.

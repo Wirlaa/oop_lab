@@ -14,7 +14,6 @@ public class Animal extends AbstractMapElement {
     public MapDirection getOrientation() { return orientation; }
     public IWorldMap getMap() { return map; }
     public List<IPositionChangeObserver> getObservers() { return Collections.unmodifiableList(observers); }
-    public boolean isAt(Vector2d position) { return Objects.equals(this.position, position); }
     public void move(MoveDirection direction) {
         Vector2d newPosition = null;
         switch (direction) {
