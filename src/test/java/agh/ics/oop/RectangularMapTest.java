@@ -32,10 +32,10 @@ class RectangularMapTest {
         RectangularMap map = new RectangularMap(width, height);
         // when
         assertFalse(map.isOccupied(new Vector2d(2,3)));
-        assertTrue(map.place(new Animal(map, new Vector2d(2,3), MapDirection.NORTH)));
+        assertDoesNotThrow(() -> map.place(new Animal(map, new Vector2d(2,3), MapDirection.NORTH)));
         assertTrue(map.isOccupied(new Vector2d(2,3)));
         // placing out of bounds
-        assertFalse(map.place(new Animal(map, new Vector2d(width+1,height+1), MapDirection.NORTH)));
+        assertThrows(IllegalArgumentException.class,() -> map.place(new Animal(map, new Vector2d(width+1,height+1), MapDirection.NORTH)));
     }
 
     @Test

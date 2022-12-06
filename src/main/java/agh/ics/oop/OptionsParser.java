@@ -10,13 +10,13 @@ public class OptionsParser {
                 .filter(Objects::nonNull)
                 .toArray(MoveDirection[]::new);
     }
-    private static MoveDirection getMoveDirection(String option) {
+    private static MoveDirection getMoveDirection(String option) throws IllegalArgumentException {
         return switch (option) {
             case "f", "forward" -> MoveDirection.FORWARD;
             case "b", "backward" -> MoveDirection.BACKWARD;
             case "r", "right" -> MoveDirection.RIGHT;
             case "l", "left" -> MoveDirection.LEFT;
-            default -> null;
+            default -> throw new IllegalArgumentException(option + " is not legal move specification");
         };
     }
 

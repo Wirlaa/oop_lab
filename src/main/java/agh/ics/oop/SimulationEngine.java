@@ -1,12 +1,14 @@
 package agh.ics.oop;
 
 
+import java.util.List;
+
 public class SimulationEngine implements IEngine {
     private static final MapDirection STARTING_ORIENTATION = MapDirection.NORTH;
     private final MoveDirection[] directions;
     private final IWorldMap map;
 
-    public SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] starting_positions) {
+    public SimulationEngine(MoveDirection[] directions, IWorldMap map, List<Vector2d> starting_positions) {
         this.directions = directions;
         this.map = map;
         for (Vector2d position: starting_positions) {
