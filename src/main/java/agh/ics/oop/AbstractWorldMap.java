@@ -2,34 +2,29 @@ package agh.ics.oop;
 
 import java.util.*;
 
-public abstract class AbstractWorldMap implements IWorldMap {
+public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     // na razie wole protected, bo i tak umozliwiam mapom zmiane tych pol
-    protected Vector2d lowerBound;
-    protected Vector2d upperBound;
-    protected final List<Animal> animals = new ArrayList<>();
-    public List<Animal> getAnimals() { return Collections.unmodifiableList(animals); }
-    public Vector2d getLowerBound() { return lowerBound; }
-    public Vector2d getUpperBound() { return upperBound; }
+    protected final Map<Vector2d, IMapElement> elements = new HashMap<>();
+    public Map<Vector2d, IMapElement> getElements() { return Collections.unmodifiableMap(elements); }
+    protected abstract Vector2d getLowerBound();
+    protected abstract Vector2d getUpperBound();
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
+        elements.put(newPosition, elements.remove(oldPosition));
+    }
     public boolean place (Animal animal) {
         if (canMoveTo(animal.getPosition())) {
-            animals.add(animal);
-            mapUpdate();
+            elements.put(animal.getPosition(),animal);
+            animal.addObserver(this);
             return true;
         }
         return false;
     }
-    public boolean isOccupied (Vector2d position) {
-        return animals.stream().anyMatch(animal -> animal.isAt(position));
+    // kowariancja zwracanego typu
+    public IMapElement objectAt(Vector2d position) {
+        return elements.get(position);
     }
-    /*
-        W szczególności dodaj implementację metody toString() w klasie AbstractWorldMap,
-         w taki sposób, aby wykorzystywała ona abstrakcyjne metody zdefiniowane w tej klasie,
-         posiadające odrębne implementacje w klasach dziedziczących.
-     */
-    // nie wiem czy nie naduzywam lowerBound i upperBound, bo w mojej implementacji nie ma potrzeby korzystania z osobnych metod
-
     @Override
     public String toString() {
-        return new MapVisualizer(this).draw(lowerBound, upperBound);
+        return new MapVisualizer(this).draw(getLowerBound(), getUpperBound());
     }
 }

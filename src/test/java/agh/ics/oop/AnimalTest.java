@@ -9,8 +9,8 @@ class AnimalTest {
     @Test
     void isOrientationCorrect() {
         // given animal and map
-        IWorldMap map = new RectangularMap(10, 5);
-        Animal animal = new Animal(map);
+        RectangularMap map = new RectangularMap(10, 5);
+        Animal animal = new Animal(map, map.getLowerBound(), MapDirection.NORTH);
         // when starting
         assertEquals(MapDirection.NORTH, animal.getOrientation());
         // after going right 3 times
@@ -24,8 +24,8 @@ class AnimalTest {
     @Test
     void isMoveWorking() {
         // given animal and map at least 2x2
-        IWorldMap map = new RectangularMap(10, 5);
-        Animal animal = new Animal(map);
+        RectangularMap map = new RectangularMap(10, 5);
+        Animal animal = new Animal(map, map.getLowerBound(), MapDirection.NORTH);
         // when starting
         assertTrue(animal.isAt(map.getLowerBound()));
         // after turning left twice and right once
@@ -53,8 +53,8 @@ class AnimalTest {
         // given animal and rectangular map with dimensions
         int width = 10;
         int height = 5;
-        IWorldMap map = new RectangularMap(width, height);
-        Animal animal = new Animal(map);
+        RectangularMap map = new RectangularMap(width, height);
+        Animal animal = new Animal(map, map.getLowerBound(), MapDirection.NORTH);
         // checking north border
         for(int i = 0; i < height + 2; i++) animal.move(MoveDirection.FORWARD);
         assertFalse(animal.isAt(new Vector2d(0,height + 2)));

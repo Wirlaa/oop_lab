@@ -10,6 +10,7 @@ public class World {
         engine.run();
     }
 }
+
 // rozne stare komentarze ktore chce zostawic :)
 
 // out.println(String.join(", ", directions)); fajny sposob na laczenie napisow
@@ -21,6 +22,7 @@ public class World {
     pytanie 10:
     moze trzymac liste wszystkich utworzonych obiektow i metode sprawdzajacą, czy pole na ktore przechodzimy nie jest zajete
     albo trzymac mape typu bool, ktora jest automatycznie aktualizowana i od razu zwraca czy miejsce jest wolne
+    albo hashmape ktora robi to wszystko bardziej efektywnie :D
 */
 
 // istnieje assertSame do sprawdzania adresow
@@ -33,11 +35,11 @@ public class World {
 
 // record gdy wszystkie pola sa final, ale przez to sa tez prywatne
 
-/*
-    komentarz do objectAt przed przeczytamiem instrukcji do labow do konca :D
-    imo entity to duzo lepsza nazwa niz mapelement
-    nie podoba mi sie, ze nie dzialam na ogolnym obiekcie, ale pewnie jak przestaniemy korzystac z list to sie problem rozwiaze
-    chcialam zamiast tego rozwiazania zrobic liste list obiektow, ale natrafilam na problem z typecastowaniem
-    pewnie daloby sie to tak zrobic gdyby animal i grass dziedziczyly z jakiejs abstrakcyjnego klasy entity i mialy taka sama funkcje getPosition()
-    a moze zle zrozumialam polecenie i objectAt ma nadal zwracac tylko zwierzeta
- */
+// javowy random: Random generator = new Random()
+
+// mapa get i put
+// przegladanie mapy? .entrySet() .values() .keySet()
+
+// https://refactoring.guru/design-patterns/observer
+
+// nieskonczonosc to Integer.MAX_VALUE

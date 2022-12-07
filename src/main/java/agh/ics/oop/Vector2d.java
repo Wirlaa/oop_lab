@@ -1,11 +1,8 @@
 package agh.ics.oop;
 
 public record Vector2d(int x, int y) {
-    //gettery
     public int getX() { return x; }
     public int getY() { return y; }
-    // troche nie wiem gdzie trzeba bylo uzyc precedes i follows, bo ich nigdzie nie wykorzystuje
-    // upperRight i lowerLeft wydaja mi sie wystarczajace
     public boolean precedes(Vector2d other) {
         return this.x <= other.x && this.y <= other.y;
     }
@@ -30,12 +27,5 @@ public record Vector2d(int x, int y) {
     @Override
     public String toString() {
         return "(%d,%d)".formatted(x, y);
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) return true;
-        if (!(other instanceof Vector2d other2d)) return false;
-        return other2d.x == this.x && other2d.y == this.y;
     }
 }

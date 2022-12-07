@@ -45,9 +45,9 @@ class RectangularMapTest {
         // place animals
         map.place(new Animal(map, new Vector2d(2,3), MapDirection.NORTH));
         map.place(new Animal(map, new Vector2d(5,1), MapDirection.NORTH));
-        assertTrue(map.objectAt(new Vector2d(2,3)) instanceof Animal);
-        assertTrue(map.objectAt(new Vector2d(5,1)) instanceof Animal);
-        assertFalse(map.objectAt(new Vector2d(0,0)) instanceof Animal);
+        assertNotNull(map.objectAt(new Vector2d(2, 3)));
+        assertNotNull(map.objectAt(new Vector2d(5, 1)));
+        assertNull(map.objectAt(new Vector2d(0, 0)));
     }
 
 }
