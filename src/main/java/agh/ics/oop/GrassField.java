@@ -14,15 +14,9 @@ public class GrassField extends AWorldMap {
         mapBoundary.putAll(elements);
     }
     @Override
-    public Vector2d getLowerBound() {
-        //return elements.keySet().stream().reduce(Vector2d::lowerLeft).orElse(null);
-        return new Vector2d(mapBoundary.getElementsXOrder().firstKey().getX(), mapBoundary.getElementsYOrder().firstKey().getY());
-    }
+    public Vector2d getLowerBound() { return mapBoundary.LowerBound(); }
     @Override
-    public Vector2d getUpperBound() {
-        //return elements.keySet().stream().reduce(Vector2d::upperRight).orElse(null);
-        return new Vector2d(mapBoundary.getElementsXOrder().lastKey().getX(), mapBoundary.getElementsYOrder().lastKey().getY());
-    }
+    public Vector2d getUpperBound() { return mapBoundary.UpperBound(); }
     private List<Vector2d> shuffleGrid(int size) {
         // probowalam z flat map i intstream, ale to bylo poza moim zasiegiem :D
         // IntStream nums = IntStream.range(0, (int) Math.sqrt(size*10) + 1);
@@ -33,7 +27,7 @@ public class GrassField extends AWorldMap {
             }
         }
         // nie wiem czy to dobrze robie, moze powinnam korzystac ze streamof
-        positionsGrid = positionsGrid.stream().filter(position -> !elements.containsKey(position)).collect(Collectors.toList());
+        positionsGrid = positionsGrid.parallelStream().filter(position -> !elements.containsKey(position)).collect(Collectors.toList());
         Collections.shuffle(positionsGrid);
         return positionsGrid.subList(0,size);
     }

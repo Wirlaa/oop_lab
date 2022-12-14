@@ -6,15 +6,7 @@ public class World {
     public static void main(String[] args) {
         try {
             Application.launch(App.class, args);
-            /*
-            AWorldMap map = new RectangularMap(5,10);//new GrassField(10);
-            MoveDirection[] directions = OptionsParser.parse(args);
-            Vector2d[] positions = {new Vector2d(2, 2), new Vector2d(3, 4)};
-            IEngine engine = new SimulationEngine(directions, map, positions);
-            engine.run();
-            */
         } catch (IllegalArgumentException exception) {
-            //"oraz zakończeniu działania programu" - i tak jest to ostatnia metoda w main, wiec program sam konczy dzialanie
             exception.printStackTrace();
         }
     }
@@ -63,3 +55,15 @@ public class World {
 // skladnia (argumenty) -> metoda;
 
 // System.exit(0), dla javafx Platform.exit()
+
+// wyjatki raczej rzadko stosowac, kiedy trzeba sie bronic przed programista a nie uzytkownikiem
+
+// throws nie trzeba przy unchecked
+
+// czy lepiej unchcecked zrobic throws jednak?
+
+// stare getLower/UpperBound
+// return elements.keySet().stream().reduce(Vector2d::lowerLeft).orElse(null);
+// return elements.keySet().stream().reduce(Vector2d::upperRight).orElse(null);
+
+// gdzie trzymac deklaracje wlasnych wyjatkow?
