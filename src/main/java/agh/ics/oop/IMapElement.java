@@ -21,4 +21,10 @@ public interface IMapElement {
      * @return True if an object is at the given position.
      */
     boolean isAt(Vector2d position);
+    /**
+     * Get the path to an image representation.
+     *
+     * @return String with a valid path.
+     */
+    String getImageName();
 }

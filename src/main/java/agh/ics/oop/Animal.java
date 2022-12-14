@@ -46,6 +46,17 @@ public class Animal extends AMapElement {
             observer.positionChanged(oldPosition, newPosition);
         }
     }
+
+    @Override
+    public String getImageName() {
+        return switch (this.orientation) {
+            case NORTH -> "src/main/resources/up.png";
+            case SOUTH -> "src/main/resources/down.png";
+            case EAST -> "src/main/resources/right.png";
+            case WEST -> "src/main/resources/left.png";
+        };
+    }
+
     @Override
     public String toString()  { return orientation.toString(); }
 }

@@ -11,24 +11,23 @@ public class MapBoundary implements IPositionChangeObserver {
             (Comparator.comparingInt(Vector2d::getY).thenComparingInt(Vector2d::getX));
     public SortedMap<Vector2d, IMapElement> getElementsXOrder() { return Collections.unmodifiableSortedMap(elementsXOrder); }
     public SortedMap<Vector2d, IMapElement> getElementsYOrder() { return Collections.unmodifiableSortedMap(elementsYOrder); }
+    public Vector2d LowerBound() {
+        return new Vector2d(elementsXOrder.firstKey().getX(), elementsYOrder.firstKey().getY());
+    }
+    public Vector2d UpperBound() {
+        return new Vector2d(elementsXOrder.lastKey().getX(), elementsYOrder.lastKey().getY());
+    }
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
         put(newPosition, remove(oldPosition));
     }
-    // nie wiem czy powinnam tworzyc metody o takich samych nazwach jak te w kolekcjach
     public void put (Vector2d position, IMapElement element) {
         elementsXOrder.put(position, element);
         elementsYOrder.put(position, element);
     }
-    public IMapElement remove (Vector2d position) throws IllegalArgumentException  {
-        // dodalam wyjatek
-        IMapElement element = elementsXOrder.remove(position);
-        if (element != null) {
-            return element;
-        }
-        else {
-            throw new IllegalArgumentException("Element at" + position + " cannot be null");
-        }
+    public IMapElement remove (Vector2d position) {
+        return elementsXOrder.remove(position);
+
     }
     public void putAll(Map<Vector2d, IMapElement> map) {
         elementsXOrder.putAll(map);

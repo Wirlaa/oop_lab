@@ -8,14 +8,8 @@ public abstract class AWorldMap implements IWorldMap, IPositionChangeObserver {
     public Map<Vector2d, IMapElement> getElements() { return Collections.unmodifiableMap(elements); }
     public abstract Vector2d getLowerBound();
     public abstract Vector2d getUpperBound();
-    public void positionChanged(Vector2d oldPosition, Vector2d newPosition) throws IllegalArgumentException {
-        // dodalam wyjatek
-        if (elements.get(oldPosition) != null) {
-            elements.put(newPosition, elements.remove(oldPosition));
-        }
-        else {
-            throw new IllegalArgumentException("Element at" + oldPosition + " cannot be null");
-        }
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
+        elements.put(newPosition, elements.remove(oldPosition));
     }
     public void place (Animal animal) throws IllegalArgumentException {
         if (canMoveTo(animal.getPosition())) {
