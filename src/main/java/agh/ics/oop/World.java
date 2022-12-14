@@ -1,13 +1,22 @@
 package agh.ics.oop;
+import agh.ics.oop.gui.App;
+import javafx.application.Application;
 
 public class World {
     public static void main(String[] args) {
-        MoveDirection[] directions = OptionsParser.parse(args);
-        //IWorldMap map = new RectangularMap(10, 5);
-        IWorldMap map = new GrassField(10);
-        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
-        IEngine engine = new SimulationEngine(directions, map, positions);
-        engine.run();
+        try {
+            Application.launch(App.class, args);
+            /*
+            AWorldMap map = new RectangularMap(5,10);//new GrassField(10);
+            MoveDirection[] directions = OptionsParser.parse(args);
+            Vector2d[] positions = {new Vector2d(2, 2), new Vector2d(3, 4)};
+            IEngine engine = new SimulationEngine(directions, map, positions);
+            engine.run();
+            */
+        } catch (IllegalArgumentException exception) {
+            //"oraz zakończeniu działania programu" - i tak jest to ostatnia metoda w main, wiec program sam konczy dzialanie
+            exception.printStackTrace();
+        }
     }
 }
 
@@ -43,3 +52,14 @@ public class World {
 // https://refactoring.guru/design-patterns/observer
 
 // nieskonczonosc to Integer.MAX_VALUE
+
+// interface extends interface
+
+// klasy anonimowe
+// skladnia new IPositionChangeObserver() {metoda;}
+
+// wyrażenie lambda - klasa anonimowa z jedna metoda dziedziczaca po interface
+
+// skladnia (argumenty) -> metoda;
+
+// System.exit(0), dla javafx Platform.exit()

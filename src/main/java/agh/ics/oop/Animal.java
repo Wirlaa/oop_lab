@@ -2,7 +2,7 @@ package agh.ics.oop;
 
 import java.util.*;
 
-public class Animal extends AbstractMapElement {
+public class Animal extends AMapElement {
     private MapDirection orientation;
     private final IWorldMap map;
     private final List<IPositionChangeObserver> observers = new ArrayList<>();

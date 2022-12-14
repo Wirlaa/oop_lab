@@ -30,11 +30,11 @@ class GrassFieldTest {
         GrassField map = new GrassField(25);
         // place first animal
         Animal animal = new Animal(map, new Vector2d(0,3), MapDirection.NORTH);
-        assertTrue(map.place(animal));
+        assertDoesNotThrow(() -> map.place(animal));
         // try placing it again
-        assertFalse(map.place(animal));
+        assertThrows(IllegalArgumentException.class, () -> map.place(animal));
         // try placing at larger coords
-        assertTrue(map.place(new Animal(map, new Vector2d(-99999,99999), MapDirection.NORTH)));
+        assertDoesNotThrow(() -> map.place(new Animal(map, new Vector2d(-99999,99999), MapDirection.NORTH)));
     }
 
     @Test
