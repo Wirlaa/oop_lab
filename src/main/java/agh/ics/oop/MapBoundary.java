@@ -3,8 +3,6 @@ package agh.ics.oop;
 import java.util.*;
 
 public class MapBoundary implements IPositionChangeObserver {
-    // wybralam mapy, bo positionChanged przyjmuje pozycje, a nie chce trzymac setu tylko z pozycjami gdyby w przyszlosci
-    // na jednej pozycji moglo byc wiecej niz jeden obiekt
     private final SortedMap<Vector2d, IMapElement> elementsXOrder = new TreeMap<>
             (Comparator.comparingInt(Vector2d::getX).thenComparingInt(Vector2d::getY));
     private final SortedMap<Vector2d, IMapElement> elementsYOrder = new TreeMap<>
@@ -26,12 +24,12 @@ public class MapBoundary implements IPositionChangeObserver {
         elementsYOrder.put(position, element);
     }
     public IMapElement remove (Vector2d position) {
+        // w teorii remove jest niepotrzebny
+        elementsYOrder.remove(position);
         return elementsXOrder.remove(position);
-
     }
     public void putAll(Map<Vector2d, IMapElement> map) {
         elementsXOrder.putAll(map);
         elementsYOrder.putAll(map);
     }
-
 }

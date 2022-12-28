@@ -11,5 +11,10 @@ public class Grass extends AMapElement {
     }
 
     @Override
+    public String getDescription() {
+        return "Grass";
+    }
+
+    @Override
     public String toString() { return "*"; }
 }

@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 public class OptionsParser {
     public static MoveDirection[] parse(String[] options) {
         return Stream.of(options)
-                .parallel()
                 .map(OptionsParser::getMoveDirection)
                 .filter(Objects::nonNull)
                 .toArray(MoveDirection[]::new);

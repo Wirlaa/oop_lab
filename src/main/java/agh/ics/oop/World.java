@@ -1,14 +1,18 @@
 package agh.ics.oop;
 import agh.ics.oop.gui.App;
+import agh.ics.oop.gui.AppOld;
 import javafx.application.Application;
+
 
 public class World {
     public static void main(String[] args) {
         try {
+            //Application.launch(AppOld.class, args);
             Application.launch(App.class, args);
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
+
     }
 }
 
@@ -38,8 +42,8 @@ public class World {
 
 // javowy random: Random generator = new Random()
 
-// mapa get i put
-// przegladanie mapy? .entrySet() .values() .keySet()
+// hashmap get i put
+// przegladanie hashmapy .entrySet() .values() .keySet()
 
 // https://refactoring.guru/design-patterns/observer
 
@@ -60,10 +64,28 @@ public class World {
 
 // throws nie trzeba przy unchecked
 
-// czy lepiej unchcecked zrobic throws jednak?
-
 // stare getLower/UpperBound
 // return elements.keySet().stream().reduce(Vector2d::lowerLeft).orElse(null);
 // return elements.keySet().stream().reduce(Vector2d::upperRight).orElse(null);
 
 // gdzie trzymac deklaracje wlasnych wyjatkow?
+// czy lepiej unchecked zrobic throws jednak?
+// kiedy uzywac stream a kiedy streamof?
+// czy w laborce 8 chodziło o to, żeby reusować image i na ich podstawie robic nowe guielementy,
+// czy trzymac gdzies informacje o guielementach zebych ich nie powtarzac?
+// czy dobrym rozwiazaniem na pozbycie sie instanceof jest zrobienie funkcji getinstance ktora zwraca informacje o tym jakiego typu jest obiekt?
+/* try (FileInputStream file = new FileInputStream(element.getImageName()))
+            {
+                Image image = new Image(file);
+                images.put(element.getImageName(), image);
+                return image;
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+                return null;
+            }
+ */
+
+// jaka jest konwencja na rozdzielanie kodu w gui? czy np trzymanie elementu grid w jednej klasie jest dobrym pomyslem?
+// czy jest szansa na zrobienie jakiegos ogolnego intefejsu obserwera, ktory mialby jedna metode objectChanged,
+// ale ktora przyjmowalaby argumenty roznego typu?

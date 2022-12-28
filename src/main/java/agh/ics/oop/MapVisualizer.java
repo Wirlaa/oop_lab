@@ -68,17 +68,12 @@ public class MapVisualizer {
         return builder.toString();
     }
     private String drawObject(Vector2d currentPosition) {
-        String result;
+        String result = EMPTY_CELL;
         if (this.map.isOccupied(currentPosition)) {
             Object object = this.map.objectAt(currentPosition);
-            if (object != null) { // huh? czemu moze byc nullem skoro jest occupied?
+            if (object != EMPTY_CELL) {
                 result = object.toString();
-            } else {
-                result = EMPTY_CELL;
             }
-        }
-        else {
-            result = EMPTY_CELL;
         }
         return result;
     }

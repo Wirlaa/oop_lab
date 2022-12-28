@@ -27,4 +27,10 @@ public interface IMapElement {
      * @return String with a valid path.
      */
     String getImageName();
+    /**
+     * Get string description of an element.
+     *
+     * @return String with a desciption.
+     */
+    String getDescription();
 }

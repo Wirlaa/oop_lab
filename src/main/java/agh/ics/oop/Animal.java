@@ -46,7 +46,6 @@ public class Animal extends AMapElement {
             observer.positionChanged(oldPosition, newPosition);
         }
     }
-
     @Override
     public String getImageName() {
         return switch (this.orientation) {
@@ -56,7 +55,10 @@ public class Animal extends AMapElement {
             case WEST -> "src/main/resources/left.png";
         };
     }
-
+    @Override
+    public String getDescription() {
+        return getPosition().toString();
+    }
     @Override
     public String toString()  { return orientation.toString(); }
 }

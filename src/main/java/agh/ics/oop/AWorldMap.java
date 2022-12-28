@@ -3,7 +3,6 @@ package agh.ics.oop;
 import java.util.*;
 
 public abstract class AWorldMap implements IWorldMap, IPositionChangeObserver {
-    // na razie wole protected, bo i tak umozliwiam mapom zmiane tych pol
     protected final Map<Vector2d, IMapElement> elements = new HashMap<>();
     public Map<Vector2d, IMapElement> getElements() { return Collections.unmodifiableMap(elements); }
     public abstract Vector2d getLowerBound();

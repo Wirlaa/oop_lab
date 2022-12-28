@@ -1,6 +1,5 @@
 package agh.ics.oop.gui;
 
-import agh.ics.oop.Animal;
 import agh.ics.oop.IMapElement;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -17,14 +16,7 @@ public class GuiElementBox {
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(width);
         imageView.setFitHeight(height);
-        String name;
-        if (element instanceof Animal) {
-            name = element.getPosition().toString();
-        }
-        else {
-            name = "Grass";
-        }
-        this.field = new VBox(imageView, new Label(name));
+        this.field = new VBox(imageView, new Label(element.getDescription()));
         this.field.setAlignment(Pos.CENTER);
     }
 
